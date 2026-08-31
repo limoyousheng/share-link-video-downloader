@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#090a0d">
+    <meta name="description" content="多平台在线视频解析、文案提取与下载">
+    <title>视频下载</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/styles.css?v=20260830-1">
+    <script src="/assets/app.js?v=20260830-1" defer></script>
+  </head>
+  <body>
+    <main class="page">
+      <h1 class="brand" aria-label="视频下载">
+        <span class="brand-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>视频下载</span>
+      </h1>
+
+      <section class="downloader" aria-label="视频解析与下载">
+        <form id="videoForm" class="control-bar">
+          <label class="sr-only" for="videoUrl">视频链接</label>
+          <input
+            id="videoUrl"
+            name="videoUrl"
+            type="text"
+            inputmode="url"
+            autocomplete="off"
+            spellcheck="false"
+            maxlength="12000"
+            required
+            placeholder="粘贴任一支持平台的链接或分享文字"
+            aria-describedby="errorText"
+          >
+          <button id="analyzeButton" class="action-button analyze" type="submit">分析</button>
+          <a id="downloadButton" class="action-button download disabled" aria-disabled="true" tabindex="-1">下载</a>
+        </form>
+
+        <div id="previewShell" class="preview-shell" data-state="empty">
+          <video id="videoPreview" controls playsinline preload="metadata" hidden></video>
+          <div id="previewPlaceholder" class="preview-placeholder" aria-hidden="true">
+            <span></span>
+          </div>
+        </div>
+
+        <div class="progress-row">
+          <progress id="progressBar" value="0" max="100" aria-label="视频处理进度">0%</progress>
+          <output id="progressValue" for="progressBar">0%</output>
+        </div>
+
+        <section id="copyPanel" class="copy-panel" aria-labelledby="copyTitle" hidden>
+          <div class="copy-panel-head">
+            <h2 id="copyTitle">文案</h2>
+          </div>
+
+          <div id="publishedBlock" class="copy-block" hidden>
+            <div class="copy-title-row">
+              <h3>发布文案</h3>
+              <button id="publishedCopyButton" class="copy-button" type="button">复制</button>
+            </div>
+            <p id="publishedText" class="copy-text"></p>
+          </div>
+
+          <details id="speechBlock" class="copy-details" hidden>
+            <summary>
+              <span>讲话文稿</span>
+              <span id="speechState" class="copy-state"></span>
+            </summary>
+            <div class="copy-detail-body">
+              <p id="audioSummary" class="audio-summary" hidden></p>
+              <button id="speechCopyButton" class="copy-button" type="button" hidden>复制</button>
+              <p id="speechText" class="copy-text speech-text" hidden></p>
+              <p id="speechNotice" class="copy-notice" hidden></p>
+            </div>
+          </details>
+
+          <p id="copyEmpty" class="copy-notice" hidden>未获取到发布文案。</p>
+        </section>
+
+        <p id="errorText" class="error-text" role="alert" hidden></p>
+        <p id="liveStatus" class="sr-only" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+  </body>
+</html>

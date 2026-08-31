@@ -1,0 +1,8 @@
+fastapi==0.141.1
+uvicorn[standard]==0.52.4
+yt-dlp[default,curl-cffi]==2026.8.19
+playwright==1.62.0
+faster-whisper==1.2.1
+imageio-ffmpeg==0.6.0
+opencc==1.4.2
+requests==2.34.2
